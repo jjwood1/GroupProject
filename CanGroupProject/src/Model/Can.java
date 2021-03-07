@@ -1,12 +1,12 @@
-/**
- * This class holds data on a type of can.
- * 
- *  This class is only started, not finished
+package Model;
 
+/**
+ * This class holds data on a type of can. 
+ * @author Joshua Wood
  * @version v1.0
  */
 
-public class SodaCan {
+public class Can {
 		private String Company;
 		private String Content;
 		private double Size;
@@ -15,7 +15,7 @@ public class SodaCan {
 		 * Default constructor
 		 */
 
-		public SodaCan() {
+		public Can() {
 			
 		}
 		//This constructor sets all of the data of the can.
@@ -23,7 +23,7 @@ public class SodaCan {
 		//String Content1
 		//double Size1
 		//double Price1
-		public SodaCan(String Company1, String Content1, double Size1, double Price1)
+		public Can(String Company1, String Content1, double Size1, double Price1)
 		{
 			Company = Company1;
 			Content = Content1;
@@ -33,7 +33,7 @@ public class SodaCan {
 		//This Constructor sets the company and content.
 		//String Company1
 		//String Content1
-		public SodaCan(String Company1, String Content1) {
+		public Can(String Company1, String Content1) {
 
 			Company = Company1;
 			Content = Content1;
@@ -41,7 +41,7 @@ public class SodaCan {
 		//This constructor sets the size and price
 		//double Size1
 		//double Price1
-		public SodaCan(double Size1, double Price1) {
+		public Can(double Size1, double Price1) {
 			Size = Size1;
 			Price = Price1;
 			

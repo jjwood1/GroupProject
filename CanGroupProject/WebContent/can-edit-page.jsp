@@ -21,7 +21,7 @@
 	</c:forEach>
 	</table>
 	<input type = "submit" value = "edit or add cans" name="doThisToItem">
-	<input type = "submit" value = "delete" name="doThisToItem">
+	
 
 	<input type = "submit" value = "sell cans" name="doThisToItem">
 	<br />

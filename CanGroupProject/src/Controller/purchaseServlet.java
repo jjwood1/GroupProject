@@ -51,7 +51,7 @@ public class purchaseServlet extends HttpServlet {
 		Purchases myPurchases = new Purchases(myCan, emp, LocalDate.now());
 		myCan.removeCan(q);
 		CanHelper.updateCan(myCan);
-		help.addPurchase(myPurchases);
+		help.updatePurchases(myPurchases);
 		getServletContext().getRequestDispatcher("/viewAllPurchasesServlet").forward(request, response);
 	}
 

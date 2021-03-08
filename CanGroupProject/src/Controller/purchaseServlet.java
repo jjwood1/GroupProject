@@ -42,7 +42,6 @@ public class purchaseServlet extends HttpServlet {
 		Can toUpdate = help.searchForCanById(id); 
 		toUpdate.removeCan(Integer.parseInt(request.getParameter("amountSold")));
 		help.updateCan(toUpdate);
-		
 		getServletContext().getRequestDispatcher("/viewAllCansServlet").forward(request, response);
 	}
 

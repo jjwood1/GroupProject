@@ -15,7 +15,7 @@
 	<td> <input type = "radio" name="id" value="${currentEmployee.id}"></td>
 	<td> ${currentEmployee.name}</td>
 	<td> ${currentEmployee.hireDate}</td>
-	</tr>
+</tr>
 </c:forEach>
 </table>
 <input type = "submit" value = "edit" name="doThisToItem"> 

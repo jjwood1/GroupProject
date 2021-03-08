@@ -116,6 +116,9 @@ public class Can {
 		{
 			quantity = quantity + quantity2;
 		}
+		public void removeCan(int amtToRemove) { 
+			quantity -= amtToRemove; 
+		}
 		//Gets the price
 		public double getPrice()
 		{

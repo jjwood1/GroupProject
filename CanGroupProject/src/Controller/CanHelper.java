@@ -39,7 +39,7 @@ public class CanHelper {
 		Manager.getTransaction().commit();
 		Manager.close();
 	}
-	public void updateCar(Can c) {
+	public void updateCan(Can c) {
 		EntityManager Manager = fact.createEntityManager();
 		Manager.getTransaction().begin();
 		Manager.merge(c);

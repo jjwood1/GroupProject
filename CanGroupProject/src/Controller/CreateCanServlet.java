@@ -41,7 +41,7 @@ public class CreateCanServlet extends HttpServlet {
 		String priceString = request.getParameter("price");
 		double price = Double.parseDouble(priceString);
 		 
-		Can myCan = new Can(company, content, price);
+		Can myCan = new Can(company, content, price, 0);
 		CanHelper dao = new CanHelper();
 		dao.insertItem(myCan);
 		getServletContext().getRequestDispatcher("/can-edit-page").forward(request, response);

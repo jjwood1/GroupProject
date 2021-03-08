@@ -35,13 +35,18 @@ public class AddCansServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CanHelper dao = new CanHelper();
-		
+		String company = request.getParameter("company");
+		String content = request.getParameter("content");
 		String quantity = request.getParameter("quantity");
 		 int q =Integer.parseInt(quantity);
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		Can myCan = dao.searchForCanById(tempId);
+		myCan.setCompany(company);
+		myCan.setContent(content);
 		myCan.addCan(q);
-		getServletContext().getRequestDispatcher("/can-edit-page").forward(request, response);
+		dao.updateCan(myCan);
+		request.setAttribute("allCans", dao.showAllItems());
+		getServletContext().getRequestDispatcher("/can-edit-page.jsp").forward(request, response);
 	}
 
 }

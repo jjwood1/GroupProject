@@ -1,6 +1,6 @@
 package Controller;
 import Model.Can;
-
+import Model.Employee;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CanNavigation
  */
-@WebServlet("/CanNavigation")
+@WebServlet("/canNavigation")
 public class CanNavigation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,7 +39,7 @@ public class CanNavigation extends HttpServlet {
 		CanHelper dao = new CanHelper();
 		String act = request.getParameter("doThisToItem");
 		
-		String path = "/can-edit-page";
+		String path = "/can-edit-page.jsp";
 		
 		if(act.equals("delete"))
 		{
@@ -59,7 +59,7 @@ public class CanNavigation extends HttpServlet {
 			Integer tempId =  Integer.parseInt(request.getParameter("id"));
 			Can canToEdit = dao.searchForCanById(tempId);
 			request.setAttribute("canToEdit", canToEdit);
-			path = "/edit-item.jsp";
+			path = "/add-cans.jsp";
 			} 
 			catch (NumberFormatException e)
 			{
@@ -67,6 +67,23 @@ public class CanNavigation extends HttpServlet {
 			}
 			
 		}
+		else if(act.equals("sell cans"))
+		{
+			try {
+				Integer tempId =  Integer.parseInt(request.getParameter("id"));
+				Can canToEdit = dao.searchForCanById(tempId);
+				EmployeeHelper dao1 = new EmployeeHelper();
+			
+				request.setAttribute("canToEdit", canToEdit);
+				request.setAttribute("allEmployees", dao1.showAllEmployees());
+				path = "/purchase.jsp";
+			}
+			catch (NumberFormatException e)
+			{
+				System.out.println("Forgot to select a can");
+			}
+		}
+		request.setAttribute("allCans", dao.showAllItems());
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 		}
 		

@@ -30,9 +30,7 @@ public class viewAllEmployees extends HttpServlet {
 		EmployeeHelper help = new EmployeeHelper(); 
 		request.setAttribute("allEmployees", help.showAllEmployees());
 		String path = "/employee-page.jsp"; 
-		if (help.showAllEmployees().isEmpty()) { 
-			path = "index.html"; 
-		}
+
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 

@@ -19,6 +19,15 @@ public class Purchases {
 	private Employee employee; 
 	@Column(name="purchase_date")
 	private LocalDate date;
+	public Purchases() {}
+	
+	public Purchases(Can can, Employee employee, LocalDate date)
+	{
+		this.can = can;
+		this.employee = employee;
+		this.date = date;
+	}
+	
 	@Override
 	public String toString() {
 		return "Purchases [id=" + id + ", can=" + can + ", employee=" + employee + ", date=" + date + "]";

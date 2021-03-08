@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.*;
 
@@ -15,6 +16,14 @@ public class Employee {
 	private String name; 
 	@Column(name="hire_date") 
 	private LocalDate hireDate;
+	public Employee()
+	{
+		
+	}
+	public Employee(String name2, LocalDate hire_date) {
+		this.name = name2;
+		this.hireDate = hire_date;
+	}
 	public int getId() {
 		return id;
 	}

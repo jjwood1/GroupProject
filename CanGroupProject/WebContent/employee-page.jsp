@@ -8,9 +8,9 @@
 <title>Employees</title>
 </head>
 <body>
-<form method = "post" action = "navigationServlet"> 
+<form method = "post" action = "employeeNavServlet"> 
 <table> 
-<c:forEach items="${requestScope.allItems}" var="currentEmployee"> 
+<c:forEach items="${requestScope.allEmployees}" var="currentEmployee"> 
 <tr> 
 	<td> <input type = "radio" name="id" value="${currentEmployee.id}"></td>
 	<td> ${currentEmployee.name}</td>
@@ -18,9 +18,18 @@
 </tr>
 </c:forEach>
 </table>
-<input type = "submit" value = "edit" name="doThisToItem"> 
+
 <input type = "submit" value = "delete" name="doThisToItem"> 
-<input type = "submit" value = "add" name = "doThisToItem"> 
+
 </form>
+<br />
+
+	<form action = "createEmployeeServlet" method="post">
+	name: <input type = "text" name = "name">
+
+	<input type = "submit" value= "Add Employee">
+	</form>
+						<br />
+														<a href = "index.html">to index</a>
 </body>
 </html>

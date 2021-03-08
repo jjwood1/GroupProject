@@ -1,23 +1,28 @@
 package Controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import Model.Employee;
 /**
- * Servlet implementation class viewAllCansServlet
+ * Servlet implementation class CreateEmployeeServlet
  */
-@WebServlet("/viewAllCansServlet")
-public class viewAllCansServlet extends HttpServlet {
+@WebServlet("/createEmployeeServlet")
+public class CreateEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllCansServlet() {
+    public CreateEmployeeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,19 +32,23 @@ public class viewAllCansServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		CanHelper helper = new CanHelper() ;
-		request.setAttribute("allCans", helper.showAllItems());
-		String path = "/can-edit-page.jsp"; 
-
-		getServletContext().getRequestDispatcher(path).forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String name = request.getParameter("name");
+		LocalDate hire_date = LocalDate.now();
+		//String priceString = request.getParameter("price");
+		//double price = Double.parseDouble(priceString);
+		 
+		Employee myEmployee = new Employee(name, hire_date);
+		EmployeeHelper dao = new EmployeeHelper();
+		dao.addEmployee(myEmployee);
+		request.setAttribute("allEmployees", dao.showAllEmployees());
+		getServletContext().getRequestDispatcher("/employee-page.jsp").forward(request, response);
 	}
 
 }

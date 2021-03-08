@@ -22,7 +22,7 @@ public class CanHelper {
 	public List<Can> showAllItems()
 	{	
 		EntityManager Manager = fact.createEntityManager();
-		List<Can>Everything = Manager.createQuery("SELECT i FROM cans i").getResultList();
+		List<Can>Everything = Manager.createQuery("SELECT i FROM Can i").getResultList();
 		return Everything;
 	}
 	public void deleteCan(Can c)
@@ -30,7 +30,7 @@ public class CanHelper {
 		EntityManager Manager = fact.createEntityManager();
 		Manager.getTransaction().begin();
 		
-		TypedQuery<Can> typedQuery = Manager.createQuery("select li from cans li where li.id = :selectedId", Can.class);
+		TypedQuery<Can> typedQuery = Manager.createQuery("select li from Can li where li.id = :selectedId", Can.class);
 		typedQuery.setParameter("selectedId", c.getId());
 
 		typedQuery.setMaxResults(1);
@@ -39,14 +39,14 @@ public class CanHelper {
 		Manager.getTransaction().commit();
 		Manager.close();
 	}
-	public void updateCan(Can c) {
+	static public void updateCan(Can c) {
 		EntityManager Manager = fact.createEntityManager();
 		Manager.getTransaction().begin();
 		Manager.merge(c);
 		Manager.getTransaction().commit();
 		Manager.close();
 	}
-	public Can searchForCanById(int c) {
+	static public Can searchForCanById(int c) {
 		EntityManager Manager = fact.createEntityManager();
 		Manager.getTransaction().begin();
 		Can found = Manager.find(Can.class, c);

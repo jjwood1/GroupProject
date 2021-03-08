@@ -6,10 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import Model.Can;
 import Model.Purchases;
 
 public class PurchasesHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("cangroupproject");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CanGroupProject");
 	
 	public void addPurchase(Purchases p) { 
 		EntityManager em = emfactory.createEntityManager(); 
@@ -20,7 +21,7 @@ public class PurchasesHelper {
 	}
 	public List<Purchases> showAllPurchases() { 
 		EntityManager em = emfactory.createEntityManager(); 
-		List<Purchases> allPurchases = em.createQuery("Select p from purchase p").getResultList(); 
+		List<Purchases> allPurchases = em.createQuery("Select p from Purchases p").getResultList(); 
 		return allPurchases; 
 	}
 	public Purchases searchPurchaseByID(Integer tempID) { 
@@ -30,7 +31,13 @@ public class PurchasesHelper {
 		em.close(); 
 		return found; 
 	}
-	
+	public void updatePurchases(Purchases c) {
+		EntityManager Manager = emfactory.createEntityManager();
+		Manager.getTransaction().begin();
+		Manager.merge(c);
+		Manager.getTransaction().commit();
+		Manager.close();
+	}
 	
 	
 }

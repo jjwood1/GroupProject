@@ -1,13 +1,15 @@
 package Controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Can;
+import Model.*;
 
 /**
  * Servlet implementation class purchaseServlet
@@ -37,12 +39,20 @@ public class purchaseServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		CanHelper help = new CanHelper(); 
-		Integer id = Integer.parseInt(request.getParameter("id")); 
-		Can toUpdate = help.searchForCanById(id); 
-		toUpdate.removeCan(Integer.parseInt(request.getParameter("amountSold")));
-		help.updateCan(toUpdate);
-		getServletContext().getRequestDispatcher("/viewAllCansServlet").forward(request, response);
+		Can myCan = CanHelper.searchForCanById(Integer.parseInt(request.getParameter("canid")));
+		EmployeeHelper eh = new EmployeeHelper();
+		Employee emp = eh.searchForEmployeeById(Integer.parseInt(request.getParameter("id")));
+		PurchasesHelper help = new PurchasesHelper(); 
+		
+		//Integer id = Integer.parseInt(request.getParameter("id")); 
+		//Purchases toUpdate = help.searchPurchaseByID(id); 
+		
+		Integer q = Integer.parseInt(request.getParameter("amountSold"));
+		Purchases myPurchases = new Purchases(myCan, emp, LocalDate.now());
+		myCan.removeCan(q);
+		CanHelper.updateCan(myCan);
+		help.addPurchase(myPurchases);
+		getServletContext().getRequestDispatcher("/viewAllPurchasesServlet").forward(request, response);
 	}
 
 }

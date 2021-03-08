@@ -36,6 +36,7 @@ public class CreateCanServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		String company = request.getParameter("company");
 		String content = request.getParameter("content");
 		String priceString = request.getParameter("price");
@@ -44,7 +45,8 @@ public class CreateCanServlet extends HttpServlet {
 		Can myCan = new Can(company, content, price, 0);
 		CanHelper dao = new CanHelper();
 		dao.insertItem(myCan);
-		getServletContext().getRequestDispatcher("/can-edit-page").forward(request, response);
+		request.setAttribute("allCans", dao.showAllItems());
+		getServletContext().getRequestDispatcher("/can-edit-page.jsp").forward(request, response);
 	}
 
 }

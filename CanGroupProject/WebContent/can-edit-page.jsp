@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method = "post" action = "navigationServlet">
+	<form method = "post" action = "canNavigation">
 	<table>
 	<c:forEach items="${requestScope.allCans}" var="currentcan">
 	<tr>
@@ -20,10 +20,10 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<input type = "submit" value = "edit" name="doThisToItem">
+	<input type = "submit" value = "edit or add cans" name="doThisToItem">
 	<input type = "submit" value = "delete" name="doThisToItem">
 
-	<input type = "submit" value = "sell" name="doThisToItem">
+	<input type = "submit" value = "sell cans" name="doThisToItem">
 	<br />
 	</form>
 	<form action = "createCanServlet" method="post">
@@ -31,6 +31,8 @@
 	Content: <input type = "text" name = "content">
 	Price: <input type = "text" name = "price">
 	<input type = "submit" value= "Add Can">
+			<br />
+		<a href = "index.html">to index</a>
 	</form><br />
 </body>
 </html>

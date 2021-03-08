@@ -112,6 +112,10 @@ public class Can {
 		{
 			this.id = id;
 		}
+		public void addCan(int quantity2)
+		{
+			quantity = quantity + quantity2;
+		}
 		//Gets the price
 		public double getPrice()
 		{

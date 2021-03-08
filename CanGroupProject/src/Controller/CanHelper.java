@@ -46,7 +46,7 @@ public class CanHelper {
 		Manager.getTransaction().commit();
 		Manager.close();
 	}
-	public Can searchForCarById(int c) {
+	public Can searchForCanById(int c) {
 		EntityManager Manager = fact.createEntityManager();
 		Manager.getTransaction().begin();
 		Can found = Manager.find(Can.class, c);

@@ -41,7 +41,7 @@ public class purchaseServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Can myCan = CanHelper.searchForCanById(Integer.parseInt(request.getParameter("canid")));
 		EmployeeHelper eh = new EmployeeHelper();
-		Employee emp = eh.searchForEmployeeById(Integer.parseInt(request.getParameter("id")));
+		Employee emp = EmployeeHelper.searchForEmployeeById(Integer.parseInt(request.getParameter("id")));
 		PurchasesHelper help = new PurchasesHelper(); 
 		
 		//Integer id = Integer.parseInt(request.getParameter("id")); 
